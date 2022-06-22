@@ -107,7 +107,7 @@ namespace lgfx
   uint32_t FreqToClockDiv(uint32_t fapb, uint32_t hz);
 
   /// for I2S and LCD_CAM peripheral clock
-  void calcClockDiv(size_t* div_a, size_t* div_b, size_t* div_n, size_t* clkcnt, size_t baseClock, size_t targetFreq);
+  void calcClockDiv(uint32_t* div_a, uint32_t* div_b, uint32_t* div_n, uint32_t* clkcnt, uint32_t baseClock, uint32_t targetFreq);
 
   // esp_efuse_get_pkg_ver
   uint32_t get_pkg_ver(void);

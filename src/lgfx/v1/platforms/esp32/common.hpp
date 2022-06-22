@@ -48,7 +48,14 @@ namespace lgfx
 
   __attribute__ ((unused)) static inline unsigned long millis(void) { return (unsigned long) (esp_timer_get_time() / 1000ULL); }
   __attribute__ ((unused)) static inline unsigned long micros(void) { return (unsigned long) (esp_timer_get_time()); }
-  __attribute__ ((unused)) static inline void delayMicroseconds(uint32_t us) { ets_delay_us(us); }
+  __attribute__ ((unused)) static inline void delayMicroseconds(uint32_t us)
+  {
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
+    esp_rom_delay_us(us);
+#else
+    ets_delay_us(us);
+#endif
+  }
   __attribute__ ((unused)) static inline void delay(uint32_t ms)
   {
     uint32_t time = micros();
@@ -59,7 +66,7 @@ namespace lgfx
       time = micros() - time;
       if (time < ms)
       {
-        ets_delay_us(ms - time);
+        delayMicroseconds(ms - time);
       }
     }
   }

@@ -357,7 +357,14 @@ struct esp_lcd_i80_bus_t {
 
       if (use_dma)
       {
-        if (slow) { ets_delay_us(slow); }
+        if (slow)
+        {
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
+          esp_rom_delay_us(slow);
+#else
+          ets_delay_us(slow);
+#endif
+        }
         _setup_dma_desc_links(&data[4], length - 4);
         gdma_start(_dma_chan, (intptr_t)(_dmadesc));
         length = 0;

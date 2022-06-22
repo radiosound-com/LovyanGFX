@@ -29,6 +29,11 @@ Contributors:
 
 #include <driver/i2s.h>
 
+#if __has_include(<soc/i2s_struct.h>)
+ // Get i2s_dev_t
+ #include <soc/i2s_struct.h>
+#endif
+
 #include "../../Bus.hpp"
 #include "../common.hpp"
 

@@ -29,6 +29,10 @@ Contributors:
 #include <sdkconfig.h>
 #include <soc/soc.h>
 #include <soc/spi_reg.h>
+#include <soc/i2s_reg.h>
+
+#include <soc/gpio_struct.h>
+#include <soc/gpio_sig_map.h>
 
 #if !defined ( REG_SPI_BASE )
 //#define REG_SPI_BASE(i) (DR_REG_SPI0_BASE - (i) * 0x1000)

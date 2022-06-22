@@ -1701,6 +1701,7 @@ namespace lgfx
 
         if (board == 0 || board == board_t::board_WT32_SC01)
         {
+          bus_cfg.spi_host = HSPI_HOST;
           bus_cfg.pin_mosi = GPIO_NUM_13;
           bus_cfg.pin_miso = -1;
           bus_cfg.pin_sclk = GPIO_NUM_14;

@@ -22,11 +22,11 @@ file(GLOB SRCS
      src/lgfx/v1/touch/*.cpp
      )
 set(COMPONENT_SRCS ${SRCS})
-find_package(LCD COMPONENTS esp_lcd QUIET)
-if (NOT LCD_FOUND)
-   set(COMPONENT_REQUIRES nvs_flash efuse)
+
+if ((IDF_VERSION_MAJOR EQUAL 4) AND (IDF_VERSION_MINOR GREATER 3) OR IDF_VERSION_MAJOR GREATER 4)
+    set(COMPONENT_REQUIRES nvs_flash efuse esp_lcd)
 else()
-  set(COMPONENT_REQUIRES nvs_flash efuse esp_lcd)
+    set(COMPONENT_REQUIRES nvs_flash efuse)
 endif()
 
 register_component()

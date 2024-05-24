@@ -142,7 +142,7 @@ namespace lgfx
         zt[iz++] = z;
       }
     }
-    if (ix < 3 || iy < 3 || iz < 3)
+    if (ix < 3 || iy < 3 || iz < 3 || ix > 7 || iy > 7 || iz > 7)
     {
       return 0;
     }
